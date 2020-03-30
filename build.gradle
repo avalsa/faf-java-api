@@ -109,7 +109,7 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'propdeps'
 apply plugin: 'idea'
 
-group = 'faforever'
+group = 'com.faforever.api'
 version = 'snapshot'
 
 sourceCompatibility = 11
@@ -121,6 +121,7 @@ repositories {
   maven { url "https://jitpack.io" }
   maven { url "https://dl.bintray.com/typesafe/maven-releases" }
 }
+
 
 compileJava.dependsOn(processResources)
 
@@ -170,6 +171,8 @@ task inttest(type: Test) {
 
   mustRunAfter test
 }
+
+inttest.onlyIf { !project.hasProperty('skipIntTests') }
 
 // JACOCO & COVERALLS
 

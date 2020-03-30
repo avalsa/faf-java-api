@@ -1,8 +1,9 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
 }
 
-group 'faforever'
+group 'com.faforever.api.dto'
 version 'snapshot'
 
 sourceCompatibility = 11
@@ -10,6 +11,19 @@ sourceCompatibility = 11
 repositories {
     mavenCentral()
     maven { url "https://jitpack.io" }
+}
+
+project.afterEvaluate {
+  publishing {
+    repositories {
+      mavenLocal()
+    }
+    publications {
+      mavenJava(MavenPublication) {
+        from components.java
+      }
+    }
+  }
 }
 
 dependencies {

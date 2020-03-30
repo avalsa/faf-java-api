@@ -1,0 +1,5 @@
+jdk:
+  - openjdk11
+install:
+  - echo "Building module faf-java-api dto"
+  - ./gradlew -x test -x inttest clean :faf-java-api-dto:build :faf-java-api-dto:publishToMavenLocal
